@@ -11,10 +11,10 @@ const app = express();
 app.use(express.json());
 /**************************/
 
-/************************| ENDPOINTGS |**************************/
+/************************| ENDPOINTS |**************************/
 //...Endpoints vão aqui...
-app.post("/signup", signup);
-app.post("/login", login);
+app.post("/user/signup", signup);
+app.post("/user/login", login);
 // app.get("/user/profile", getOwnProfile);
 app.get("/user/:id", getProfileById);
 // app.post("/recipe", createRecipe);
