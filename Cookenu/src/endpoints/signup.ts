@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { IdGenerator } from "../services/IdGenerator";
 import { HashManager } from "../services/HashManager";
-import { UserDatabase } from "../data/UserDatabase";
+import { UserDatabase } from "../data/userDatabase";
 import { Authenticator } from "../services/Authenticator";
-import { BaseDatabase } from "../data/BaseDatabase";
+import { BaseDatabase } from "../data/baseDatabase";
 
 export const signup = async (req: Request, res: Response) => {
   try {
@@ -28,8 +28,8 @@ export const signup = async (req: Request, res: Response) => {
     const userDatabase = new UserDatabase();
     await userDatabase.createUser(id, name, email, hashPassword);
 
-    const authenticator = new Authenticator();
-    const token = authenticator.generateToken({ id });
+   
+    const token = Authenticator.generateToken({ id });
 
     res.status(200).send({
       message: "User created successfully",

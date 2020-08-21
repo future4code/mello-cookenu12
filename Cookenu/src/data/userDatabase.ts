@@ -1,4 +1,4 @@
-import { BaseDatabase } from "./BaseDatabase";
+import { BaseDatabase } from "./baseDatabase";
 export class UserDatabase extends BaseDatabase {
   private static TABLE_NAME: string = "Users";
   public async createUser(
@@ -27,7 +27,6 @@ export class UserDatabase extends BaseDatabase {
     const result = await this.getConnection()
       .select("*")
       .from(UserDatabase.TABLE_NAME)
-      .where({ id });
     return result[0];
   }
 }

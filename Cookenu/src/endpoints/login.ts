@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { UserDatabase } from "../data/UserDatabase";
+import { UserDatabase } from "../data/userDatabase";
 import { Hash } from "crypto";
 import { HashManager } from "../services/HashManager";
 import { Authenticator } from "../services/Authenticator";
-import { BaseDatabase } from "../data/BaseDatabase";
+import { BaseDatabase } from "../data/baseDatabase";
 
 export const login = async (req: Request, res: Response) => {
   try {
@@ -23,8 +23,7 @@ export const login = async (req: Request, res: Response) => {
       throw new Error("User or password incorrect");
     }
 
-    const authenticator = new Authenticator();
-    const token = authenticator.generateToken({ id: user.id });
+    const token = Authenticator.generateToken({ id: user.id });
 
     res.status(200).send({
       message: "User logged successfully",
