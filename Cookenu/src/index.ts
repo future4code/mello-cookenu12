@@ -1,6 +1,9 @@
-import express from "express";
 import dotenv from "dotenv";
+import express, {Request, Response} from "express";
 import { AddressInfo } from "net";
+import { getProfileById } from "./endpoints/getProfileById";
+import { signup } from "./endpoints/signup";
+import { login } from "./endpoints/login";
 
 /*******| CONFIGS |*******/
 dotenv.config();
@@ -10,10 +13,10 @@ app.use(express.json());
 
 /************************| ENDPOINTGS |**************************/
 //...Endpoints vão aqui...
-// app.post("/signup", signup);
-// app.post("/login", login);
+app.post("/signup", signup);
+app.post("/login", login);
 // app.get("/user/profile", getOwnProfile);
-// app.get("/user/:id", getProfileByid);
+app.get("/user/:id", getProfileById);
 // app.post("/recipe", createRecipe);
 // app.get("/recipe/:id", getRecipeById);
 // app.post("/user/follow", followUserById);
