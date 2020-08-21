@@ -30,10 +30,13 @@ export const signup = async (req: Request, res: Response) => {
 
    
     const token = Authenticator.generateToken({ id });
+    const tokenData = Authenticator.getTokenData(token)
+
+    
 
     res.status(200).send({
-      message: "User created successfully",
-      token,
+      message: "Parabéns! Usuário cadastrado!",
+      tokenData,
     });
   } catch (e) {
     res.status(400).send({
